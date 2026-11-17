@@ -11,6 +11,7 @@ pipeline directly. All prediction goes through the MLflow pyfunc wrapper.
 Author: S Avantika (1MS25CI108)
 """
 
+import argparse
 import os
 import mlflow
 import mlflow.pyfunc
@@ -24,23 +25,33 @@ OUTPUT_PATH = os.path.join("outputs", "new_data_predictions.csv")
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Predict using MLflow Model Registry alias")
+    parser.add_argument(
+        "--alias",
+        default="champion",
+        choices=["champion", "challenger"],
+        help="Model alias to load from registry (default: champion)"
+    )
+    args = parser.parse_args()
+    alias = args.alias
+
     mlflow.set_tracking_uri(TRACKING_URI)
     client = MlflowClient(tracking_uri=TRACKING_URI)
 
-    # ── Load the champion model by alias ──
-    champion_uri = f"models:/{REGISTERED_MODEL_NAME}@champion"
-    print(f"Loading champion model from: {champion_uri}")
-    champion_model = mlflow.pyfunc.load_model(champion_uri)
+    # ── Load the model by alias ──
+    model_uri = f"models:/{REGISTERED_MODEL_NAME}@{alias}"
+    print(f"Loading {alias} model from: {model_uri}")
+    loaded_model = mlflow.pyfunc.load_model(model_uri)
     print("  Model loaded successfully.\n")
 
     # ── Figure out what was loaded ──
-    mv = client.get_model_version_by_alias(REGISTERED_MODEL_NAME, "champion")
+    mv = client.get_model_version_by_alias(REGISTERED_MODEL_NAME, alias)
     run_id = mv.run_id
     run = client.get_run(run_id)
     hf_model_id = run.data.params.get("hf_model_id", "unknown")
 
     print(f"  Registry name : {REGISTERED_MODEL_NAME}")
-    print(f"  Alias         : champion")
+    print(f"  Alias         : {alias}")
     print(f"  Model version : {mv.version}")
     print(f"  Source run    : {run_id[:8]}...")
     print(f"  HF model ID   : {hf_model_id}")
@@ -54,7 +65,7 @@ def main():
     input_df = pd.DataFrame({"text": new_data["sentence"]})
 
     # ── Predict ──
-    predictions = champion_model.predict(input_df)
+    predictions = loaded_model.predict(input_df)
 
     # merge predictions with ground truth for a nice table
     result_df = predictions.copy()
