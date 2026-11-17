@@ -1,0 +1,9 @@
+text,prediction,confidence,expected_label
+The new cafe on Brigade Road makes the best filter coffee I have ever had.,POSITIVE,0.9988,1
+I wasted two hours trying to get the printer to work and it still does not print.,NEGATIVE,0.9995,0
+My roommate cooked an amazing biryani for dinner last night.,POSITIVE,0.9988,1
+"The bus was forty minutes late and completely packed, worst commute ever.",NEGATIVE,0.9995,0
+This wireless mouse has been working flawlessly for over a year now.,POSITIVE,0.9989,1
+"The hostel wifi keeps disconnecting every five minutes, it is so frustrating.",NEGATIVE,0.9995,0
+Our college fest had a brilliant lineup of bands this year.,POSITIVE,0.9989,1
+"The canteen food has gone downhill, everything tastes bland and stale.",NEGATIVE,0.9995,0

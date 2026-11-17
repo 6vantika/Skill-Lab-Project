@@ -1,0 +1,33 @@
+{
+  "model_a": {
+    "hf_model_id": "distilbert-base-uncased-finetuned-sst-2-english",
+    "metrics": {
+      "accuracy": 0.935,
+      "macro_f1": 0.9343,
+      "macro_precision": 0.9359,
+      "macro_recall": 0.9331,
+      "avg_latency_ms": 40.45,
+      "total_inference_s": 8.09
+    }
+  },
+  "model_b": {
+    "hf_model_id": "siebert/sentiment-roberta-large-english",
+    "metrics": {
+      "accuracy": 0.945,
+      "macro_f1": 0.9444,
+      "macro_precision": 0.946,
+      "macro_recall": 0.9432,
+      "avg_latency_ms": 252.32,
+      "total_inference_s": 50.46
+    }
+  },
+  "champion_rule": {
+    "primary_metric": "macro_f1",
+    "margin": 0.01,
+    "tiebreaker": "avg_latency_ms",
+    "direction": "higher macro_f1 is better; lower latency is better"
+  },
+  "delta_macro_f1": 0.0101,
+  "winner": "B",
+  "reason": "Challenger (B) beats Champion (A) on macro-F1 by 0.0101 (>= margin of 0.01)"
+}

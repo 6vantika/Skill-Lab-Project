@@ -1,0 +1,6 @@
+sentence,reference_label,model_a_pred,model_a_conf,model_b_pred,model_b_conf,comment
+"fun , flip and terribly hip bit of cinematic entertainment . ",1,POSITIVE,0.9999,NEGATIVE,0.9985,"A got it right (POSITIVE, 100%); B predicted NEGATIVE incorrectly"
+it 's a bit disappointing that it only manages to be decent instead of dead brilliant . ,0,NEGATIVE,0.9994,POSITIVE,0.9972,"A got it right (NEGATIVE, 100%); B predicted POSITIVE incorrectly"
+oh come on . ,0,POSITIVE,0.9851,NEGATIVE,0.9939,"B got it right (NEGATIVE, 99%); A predicted POSITIVE incorrectly"
+"i 've always dreamed of attending cannes , but after seeing this film , it 's not that big a deal . ",0,NEGATIVE,0.9975,POSITIVE,0.9987,"A got it right (NEGATIVE, 100%); B predicted POSITIVE incorrectly"
+"/ but daphne , you 're too buff / fred thinks he 's tough / and velma - wow , you 've lost weight ! ",0,NEGATIVE,0.9993,POSITIVE,0.9903,"A got it right (NEGATIVE, 100%); B predicted POSITIVE incorrectly"
