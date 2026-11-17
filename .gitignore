@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# MLflow
+mlruns/
+mlflow.db
+mlartifacts/
+
+# Model files (too large for git)
+*.bin
+*.pt
+*.safetensors
+*.onnx
+
+# Hugging Face cache
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.docx
+
+# Virtual env
+venv/
+env/
+.env
